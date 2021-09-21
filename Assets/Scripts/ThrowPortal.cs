@@ -12,7 +12,7 @@ public class ThrowPortal : MonoBehaviour
 
     // Start is called before the first frame update
     void Start(){
-        mainCamera = GameObject.FindWithTag("MainCamera");
+        mainCamera = GameObject.FindWithTag("PlayerCamera");
     }
 
     // Update is called once per frame
@@ -30,8 +30,6 @@ public class ThrowPortal : MonoBehaviour
 
     void throwPortal(GameObject portal) {
 
-
-
         int x = Screen.width / 2;
         int y = Screen.height / 2;
 
@@ -40,7 +38,7 @@ public class ThrowPortal : MonoBehaviour
         RaycastHit hit;
 
         if(Physics.Raycast(ray, out hit)) {
-            //if (hit.collider.tag == "NoPortal") return; 
+            if (hit.collider.tag == "NoPortal") return; 
             Quaternion hitObjectRotation = Quaternion.LookRotation(hit.normal);
             portal.transform.position = hit.point;
             portal.transform.rotation = hitObjectRotation;

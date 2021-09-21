@@ -8,6 +8,10 @@ TagManager:
   - CubitoRigidBody
   - Lava
   - Inventario
+  - NoPortal
+  - ArmaPortal
+  - PlayerCamera
+  - MovableBox
   layers:
   - Default
   - TransparentFX
