@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private UI_Inventory uiInventory = null;
-    [SerializeField] private Transform respawn = null;
 
     private Collectable collectable;
     //private Inventory inventory;
@@ -84,11 +83,6 @@ public class Player : MonoBehaviour
             }
             uiInventory.setInventory(inventory);
             Destroy(collision.gameObject);
-        }
-
-        if(collision.gameObject.tag == "Lava")
-        {
-            transform.position = respawn.position;
         }
     }
 }
