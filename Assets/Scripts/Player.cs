@@ -10,8 +10,14 @@ public class Player : MonoBehaviour
     private Inventario inventory;
 
     private Transform UI_Inventory;
+
+    // Canvas de inventario
     private bool showInventory = false;
-    private GameObject canvas;
+    private GameObject canvasInventory;
+
+    // Canvas de muerte
+    private bool showMuerte = false;
+    private GameObject canvasMuerte;
 
     private bool shiftInput = false;
 
@@ -19,16 +25,23 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        canvas = GameObject.Find("Canvas");
-        if (canvas.activeInHierarchy)
+        canvasMuerte = GameObject.Find("MenuMuerte");
+        if (canvasMuerte.activeInHierarchy)
         {
-            // Si el canvas está activo, desactivarlo
-            canvas.SetActive(false);
+            // Si la muerte está activo en canvas, desactivarlo
+            canvasMuerte.SetActive(false);
+        }
+        canvasInventory = GameObject.Find("UI_Inventory");
+        if (canvasInventory.activeInHierarchy)
+        {
+            // Si el inventario está activo en canvas, desactivarlo
+            canvasInventory.SetActive(false);
         }
         // Obtiene el inventario, vacío en la primer escena, con objetos las siguientes escenas
         inventory = GameObject.FindGameObjectWithTag("Inventario").GetComponent<Inventario>();
         uiInventory.setInventory(inventory);
 
+        // Obtener la cámara para ver donde apunto
         camera = GameObject.FindWithTag("PlayerCamera");
     }
 
@@ -40,16 +53,31 @@ public class Player : MonoBehaviour
             if (showInventory)
             {
                 // Mostrar el inventario
-                canvas.SetActive(true);
+                canvasInventory.SetActive(true);
             }
             else
             {
                 // Esconder el inventario
-                canvas.SetActive(false);
+                canvasInventory.SetActive(false);
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            showMuerte = !showMuerte;
+            if (showMuerte)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                canvasMuerte.SetActive(true);
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                canvasMuerte.SetActive(false);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             //shiftInput = true;
         }
