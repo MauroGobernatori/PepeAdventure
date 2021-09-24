@@ -19,18 +19,25 @@ public class Player : MonoBehaviour
     private bool showMuerte = false;
     private GameObject canvasMuerte;
 
+    //Canvas Crosshair
+    private GameObject crosshair;
+
     private bool shiftInput = false;
 
     private GameObject camera;
 
+    
+
     private void Awake()
     {
+        crosshair = GameObject.Find("CrossHair");
         canvasMuerte = GameObject.Find("MenuMuerte");
+        /*
         if (canvasMuerte.activeInHierarchy)
         {
             // Si la muerte está activo en canvas, desactivarlo
             canvasMuerte.SetActive(false);
-        }
+        }*/
         canvasInventory = GameObject.Find("UI_Inventory");
         if (canvasInventory.activeInHierarchy)
         {
@@ -61,22 +68,6 @@ public class Player : MonoBehaviour
                 canvasInventory.SetActive(false);
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            showMuerte = !showMuerte;
-            if (showMuerte)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                canvasMuerte.SetActive(true);
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                canvasMuerte.SetActive(false);
-            }
-        }
-
         if (Input.GetKeyDown(KeyCode.Z))
         {
             //shiftInput = true;

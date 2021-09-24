@@ -9,12 +9,14 @@ public class CanvasControlador : MonoBehaviour
     private GameObject respawn;
 
     private GameObject canvasMuerte;
+    private GameObject crosshair;
 
     private void Awake()
     {
         canvasMuerte = GameObject.Find("MenuMuerte");
         player = GameObject.FindWithTag("Player");
         respawn = GameObject.Find("SpawnPoint");
+        crosshair = GameObject.Find("CrossHair");
     }
     public void respawnPlayer()
     {
@@ -23,6 +25,11 @@ public class CanvasControlador : MonoBehaviour
         {
             canvasMuerte.SetActive(false);
         }
+        if (!crosshair.activeInHierarchy)
+        {
+            crosshair.SetActive(true);
+        }
         Cursor.lockState = CursorLockMode.Locked;
+        player.GetComponent<Healt_and_Damage>().vida = 100;
     }
 }

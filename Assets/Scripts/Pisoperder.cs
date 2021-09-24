@@ -22,7 +22,7 @@ public class Pisoperder : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
-            other.transform.position = Respawn.transform.position;
+            //other.transform.position = Respawn.transform.position;
         }
     }
 

@@ -18,7 +18,7 @@ public class StepThroughPortal : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        Debug.Log("Something hit the portal");
+        //Debug.Log("Something hit the portal");
         if(other.tag == "Player" || other.tag == "CubitoRigidBody") {
             other.transform.position = otherPortal.transform.position + otherPortal.transform.forward * 2f;
         }

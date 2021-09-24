@@ -19,11 +19,11 @@ public class ThrowPortal : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) {
-            Debug.Log("Left Click");
+            //Debug.Log("Left Click");
             throwPortal(leftPortal);
         }
         if (Input.GetMouseButtonDown(1)) {
-            Debug.Log("Right Click");
+            //Debug.Log("Right Click");
             throwPortal(rightPortal);
         }
     }
@@ -38,12 +38,13 @@ public class ThrowPortal : MonoBehaviour
         RaycastHit hit;
 
         if(Physics.Raycast(ray, out hit)) {
-            if (hit.collider.tag == "NoPortal") return; 
+            if (hit.collider.tag == "NoPortal") return;
+            if (hit.collider.tag == "Lava") return;
             Quaternion hitObjectRotation = Quaternion.LookRotation(hit.normal);
             portal.transform.position = hit.point;
             portal.transform.rotation = hitObjectRotation;
-            Debug.Log(hit.point);
-            Debug.Log(hit.collider);
+            //Debug.Log(hit.point);
+            //Debug.Log(hit.collider);
         }
     }
 
