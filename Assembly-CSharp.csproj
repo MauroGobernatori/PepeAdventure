@@ -133,6 +133,7 @@
     <Compile Include="Assets\Scripts\Inventario\Item.cs" />
     <Compile Include="Assets\AssetStore\Mini First Person Controller\Scripts\Components\FirstPersonAudio.cs" />
     <Compile Include="Assets\AssetStore\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" />
+    <Compile Include="Assets\Scripts\CanvasControlador.cs" />
     <Compile Include="Assets\Scripts\Inventario\Inventory.cs" />
     <Compile Include="Assets\AssetStore\Standard Assets\Characters\RollerBall\Scripts\Ball.cs" />
     <Compile Include="Assets\AssetStore\Standard Assets\Utility\TimedObjectDestructor.cs" />
@@ -147,7 +148,7 @@
     <Compile Include="Assets\Scripts\Collectable.cs" />
     <Compile Include="Assets\Scripts\QuickChange.cs" />
     <Compile Include="Assets\AssetStore\Standard Assets\Utility\AutoMobileShaderSwitch.cs" />
-    <Compile Include="Assets\Scripts\CanvasControlador.cs" />
+    <Compile Include="Assets\Scripts\evitarCaidaPlataforma.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\AssetStore\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
