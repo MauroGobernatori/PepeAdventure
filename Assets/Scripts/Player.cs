@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private UI_Inventory uiInventory = null;
+    [SerializeField] private float grabbingDistance;
 
     private Collectable collectable;
     private Inventario inventory;
@@ -25,12 +26,13 @@ public class Player : MonoBehaviour
 
     private bool grabInput = false;
     private bool grabbingInput = false;
+    private bool ungrabInput = false;
     private GameObject grabbing;
     private GameObject guide;
 
     private void Awake()
     {
-        guide = GameObject.Find("Guide");
+        guide = GameObject.Find("puntoAgarre");
         grabbing = GameObject.Find("Grabbing");
         crosshair = GameObject.Find("CrossHair");
         canvasMuerte = GameObject.Find("MenuMuerte");
@@ -72,7 +74,14 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            grabInput = true;
+            if (!grabbingInput)
+            {
+                grabInput = true;
+            }
+            else
+            {
+                ungrabInput = true;
+            }
         }
     }
 
@@ -87,16 +96,22 @@ public class Player : MonoBehaviour
             RaycastHit hit;
 
             Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
-
             if(Physics.Raycast(ray, out hit))
             {
                 if(hit.transform.gameObject.GetComponent<cajaMovible>())
                 {
-                    grabInput = false;
-                    guide.transform.position = new Vector3(guide.transform.position.x, guide.transform.position.y, 3);
-                    grabbing = hit.transform.gameObject;
-                    grabbing.GetComponent<cajaMovible>().grabed();
-                    grabbingInput = true;
+                    if (hit.distance < grabbingDistance)
+                    {
+                        grabInput = false;
+                        guide.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
+                        grabbing = hit.transform.gameObject;
+                        grabbing.GetComponent<cajaMovible>().grabed();
+                        grabbingInput = true;
+                    }
+                    else
+                    {
+                        grabInput = false;
+                    }
                 }
                 else
                 {
@@ -104,14 +119,13 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        if (grabbingInput)
+
+        if (ungrabInput)
         {
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                grabbingInput = false;
-                grabbing.GetComponent<cajaMovible>().ungrabbed();
-                grabbing = null;
-            }
+            grabbingInput = false;
+            grabbing.GetComponent<cajaMovible>().ungrabbed();
+            grabbing = null;
+            ungrabInput = false;
         }
     }
 

@@ -26,7 +26,6 @@ public class Healt_and_Damage : MonoBehaviour
     {
         crosshair = GameObject.Find("CrossHair");
         canvasMuerte = GameObject.Find("MenuMuerte");
-        Debug.Log("Hola");
         if (canvasMuerte.activeInHierarchy)
         {
             // Si la muerte está activo en canvas, desactivarlo

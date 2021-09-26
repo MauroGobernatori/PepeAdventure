@@ -11,7 +11,6 @@ TagManager:
   - NoPortal
   - ArmaPortal
   - PlayerCamera
-  - MovableBox
   layers:
   - Default
   - TransparentFX

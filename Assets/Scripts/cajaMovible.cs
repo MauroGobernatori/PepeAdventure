@@ -4,29 +4,26 @@ using UnityEngine;
 
 public class cajaMovible : MonoBehaviour
 {
+    private GameObject puntoAgarre;
 
-    public GameObject item;
-    public GameObject tempParent;
-    public Transform guide;
-    void Start()
+    private void Start()
     {
-        
+        puntoAgarre = GameObject.Find("puntoAgarre");
     }
-
     public void grabed()
     {
-        item.GetComponent<Rigidbody>().useGravity = false;
-        item.GetComponent<Rigidbody>().isKinematic = true;
-        item.transform.position = guide.transform.position;
-        item.transform.rotation = guide.transform.rotation;
-        item.transform.parent = tempParent.transform;
+        GetComponent<Rigidbody>().useGravity = false;
+        GetComponent<Rigidbody>().isKinematic = true;
+        transform.position = puntoAgarre.transform.position;
+        transform.rotation = puntoAgarre.transform.rotation;
+        transform.parent = puntoAgarre.transform;
     }
 
     public void ungrabbed()
     {
-        item.GetComponent<Rigidbody>().useGravity = true;
-        item.GetComponent<Rigidbody>().isKinematic = false;
-        item.transform.parent = null;
-        item.transform.position = guide.transform.position;
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<Rigidbody>().isKinematic = false;
+        transform.parent = null;
+        transform.position = puntoAgarre.transform.position;
     }
 }
