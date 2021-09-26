@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
 
     private Collectable collectable;
     private Inventario inventory;
-
     private Transform UI_Inventory;
 
     // Canvas de inventario
@@ -22,14 +21,17 @@ public class Player : MonoBehaviour
     //Canvas Crosshair
     private GameObject crosshair;
 
-    private bool shiftInput = false;
-
     private GameObject camera;
 
-    
+    private bool grabInput = false;
+    private bool grabbingInput = false;
+    private GameObject grabbing;
+    private GameObject guide;
 
     private void Awake()
     {
+        guide = GameObject.Find("Guide");
+        grabbing = GameObject.Find("Grabbing");
         crosshair = GameObject.Find("CrossHair");
         canvasMuerte = GameObject.Find("MenuMuerte");
         /*
@@ -70,32 +72,13 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            //shiftInput = true;
+            grabInput = true;
         }
     }
 
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            int x = Screen.width / 2;
-            int y = Screen.height / 2;
-
-            Ray ray = camera.GetComponent<Camera>().ScreenPointToRay(new Vector3(x, y));
-            RaycastHit hit;
-
-            Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.transform.tag == "MovableBox")
-                {
-                    Debug.Log("Se puede mover");
-                }
-            }
-        }
-
-        if (shiftInput)
+        if (grabInput)
         {
             int x = Screen.width / 2;
             int y = Screen.height / 2;
@@ -107,12 +90,28 @@ public class Player : MonoBehaviour
 
             if(Physics.Raycast(ray, out hit))
             {
-                if(hit.transform.tag == "MovableBox")
+                if(hit.transform.gameObject.GetComponent<cajaMovible>())
                 {
-                    Debug.Log("Se puede mover");
+                    grabInput = false;
+                    guide.transform.position = new Vector3(guide.transform.position.x, guide.transform.position.y, 3);
+                    grabbing = hit.transform.gameObject;
+                    grabbing.GetComponent<cajaMovible>().grabed();
+                    grabbingInput = true;
+                }
+                else
+                {
+                    grabInput = false;
                 }
             }
-            shiftInput = false;
+        }
+        if (grabbingInput)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                grabbingInput = false;
+                grabbing.GetComponent<cajaMovible>().ungrabbed();
+                grabbing = null;
+            }
         }
     }
 
