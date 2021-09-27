@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private UI_Inventory uiInventory = null;
-    [SerializeField] private float grabbingDistance;
+    [SerializeField] private float grabbingDistance = 0f;
 
     private Collectable collectable;
     private Inventario inventory;
@@ -14,10 +14,6 @@ public class Player : MonoBehaviour
     // Canvas de inventario
     private bool showInventory = false;
     private GameObject canvasInventory;
-
-    // Canvas de muerte
-    private bool showMuerte = false;
-    private GameObject canvasMuerte;
 
     //Canvas Crosshair
     private GameObject crosshair;
@@ -35,13 +31,6 @@ public class Player : MonoBehaviour
         guide = GameObject.Find("puntoAgarre");
         grabbing = GameObject.Find("Grabbing");
         crosshair = GameObject.Find("CrossHair");
-        canvasMuerte = GameObject.Find("MenuMuerte");
-        /*
-        if (canvasMuerte.activeInHierarchy)
-        {
-            // Si la muerte está activo en canvas, desactivarlo
-            canvasMuerte.SetActive(false);
-        }*/
         canvasInventory = GameObject.Find("UI_Inventory");
         if (canvasInventory.activeInHierarchy)
         {
@@ -105,7 +94,7 @@ public class Player : MonoBehaviour
                         grabInput = false;
                         guide.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
                         grabbing = hit.transform.gameObject;
-                        grabbing.GetComponent<cajaMovible>().grabed();
+                        grabbing.GetComponent<cajaMovible>().grabbed();
                         grabbingInput = true;
                     }
                     else
@@ -123,7 +112,7 @@ public class Player : MonoBehaviour
         if (ungrabInput)
         {
             grabbingInput = false;
-            grabbing.GetComponent<cajaMovible>().ungrabbed();
+            grabbing.GetComponent<cajaMovible>().released();
             grabbing = null;
             ungrabInput = false;
         }

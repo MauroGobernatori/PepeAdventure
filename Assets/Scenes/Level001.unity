@@ -1394,8 +1394,8 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
-  m_Range: 10
+  m_Intensity: 1.6
+  m_Range: 1000
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -1450,13 +1450,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0.0048065, y: 19.081, z: -0.39458}
+  m_LocalRotation: {x: 0.70955724, y: 0.19554536, z: 0.19828457, w: 0.6472819}
+  m_LocalPosition: {x: 5.6, y: 18.5, z: -2.8}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 57.248, y: -261.13, z: -260.899}
 --- !u!1 &745835549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1967,7 +1967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1014680109
 Transform:
   m_ObjectHideFlags: 0
@@ -2592,7 +2592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 888832b90455136458435dac31bdf06a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 2059834082}
 --- !u!65 &1360426441
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3264,6 +3264,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1710718467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710718460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 888832b90455136458435dac31bdf06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 2059834082}
 --- !u!1 &1728667117
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,7 +3660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1930742892
 Transform:
   m_ObjectHideFlags: 0
@@ -4333,11 +4346,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5784323957973542793, guid: 72aff43f51067474ca01c3d98ec03918, type: 3}
       propertyPath: m_Size.y
-      value: 1.6819484
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5784323957973542793, guid: 72aff43f51067474ca01c3d98ec03918, type: 3}
       propertyPath: m_Center.y
-      value: 0.3409753
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5784323957973542794, guid: 72aff43f51067474ca01c3d98ec03918, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4352,6 +4365,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1602095916}
     m_Modifications:
+    - target: {fileID: 1537882460942799497, guid: e9a0b8d0fcd79684e83c48dc46f252ea, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3270259597301106579, guid: e9a0b8d0fcd79684e83c48dc46f252ea, type: 3}
       propertyPath: m_Name
       value: CajaMovible

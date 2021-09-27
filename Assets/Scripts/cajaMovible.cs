@@ -10,7 +10,7 @@ public class cajaMovible : MonoBehaviour
     {
         puntoAgarre = GameObject.Find("puntoAgarre");
     }
-    public void grabed()
+    public void grabbed()
     {
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Rigidbody>().isKinematic = true;
@@ -19,7 +19,7 @@ public class cajaMovible : MonoBehaviour
         transform.parent = puntoAgarre.transform;
     }
 
-    public void ungrabbed()
+    public void released()
     {
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Rigidbody>().isKinematic = false;
