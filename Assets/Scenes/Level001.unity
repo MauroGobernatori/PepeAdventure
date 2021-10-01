@@ -3688,7 +3688,7 @@ GameObject:
   - component: {fileID: 2053085480}
   - component: {fileID: 2053085479}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Piso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3832,6 +3832,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1686910873}
     m_Modifications:
+    - target: {fileID: 8898877909797281757, guid: 0379c18a05390984cbf6c382b54d351c, type: 3}
+      propertyPath: m_text
+      value: Health
+      objectReference: {fileID: 0}
+    - target: {fileID: 8898877909797281757, guid: 0379c18a05390984cbf6c382b54d351c, type: 3}
+      propertyPath: m_fontSize
+      value: 34.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8898877909797281758, guid: 0379c18a05390984cbf6c382b54d351c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
